@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {useState, useEffect  } from 'react';
+import axios from 'axios'
 
-let users = [{ id: 1, username: "testi", password: "testi" }, { id: 2, username: "testi2", password: "testi2" }]
 
 const UserList = () => {
+  const [users, setUsers] = useState([]);
+
+  
+  useEffect(() => {
+  axios
+  .get('http://localhost:3001/api/users')
+  .then(response=>{
+    setUsers(response.data);
+    console.log(users)
+  })
+  }, [])
+
   return (
     <div>
       <h1>Users</h1>
