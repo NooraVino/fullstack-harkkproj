@@ -9,7 +9,7 @@ https://guarded-reaches-84974.herokuapp.com/
 | :----:|:-----| :-----|
 | 26.11. | 1    | sovelluksen idean miettiminen |
 | 27.11. | 5    | rakenteen suunnittelu, backend ja frontend pystyyn ja heroku |
-| 28.11. |      | frontend herokuun |
+| 28.11. | 5,5    | frontend herokuun, mongoDB, userin toiminnallisuuden runko |
 
 
 
