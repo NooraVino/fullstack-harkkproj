@@ -8,7 +8,7 @@ const UserList = () => {
   
   useEffect(() => {
   axios
-  .get('https://guarded-reaches-84974.herokuapp.com/api/users')
+  .get('/api/users')
   .then(response=>{
     setUsers(response.data);
     console.log(users)

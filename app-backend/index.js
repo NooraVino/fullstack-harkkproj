@@ -1,16 +1,27 @@
 const express = require('express')
 const app = express()
+require('dotenv').config()
+const User = require('./models/user')
 
-let users = [  {    id: 1,    username: "testi",   password: "testi"  }, {    id: 2,    username: "noora",   password: "password"  }  ]
 
-app.use(express.json()) 
+
+
+
+app.use(express.json())
 const cors = require('cors')
 
+
 app.use(cors())
+app.use(express.static('build'))
 
 
-app.get('/api/users', (req, res) => {
-  res.json(users)
+
+
+app.get('/api/users', (req, response) => {
+  User.find({}).then(users => {
+    response.json(users)
+
+  })
 })
 
 app.post('/api/users', (request, response) => {
@@ -20,7 +31,7 @@ app.post('/api/users', (request, response) => {
   response.json(user)
 })
 
-const PORT = 3001
+const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
