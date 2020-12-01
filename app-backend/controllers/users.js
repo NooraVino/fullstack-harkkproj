@@ -2,8 +2,25 @@
 const userRouter = require('express').Router()
 const bcrypt = require('bcrypt')
 const User = require('../models/user')
+const jwt = require('jsonwebtoken')
+
+
+const getTokenFrom = request => {
+  const authorization = request.get('authorization')
+  if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+    return authorization.substring(7)
+  } return null
+}
 
 userRouter.get('/', (request, response) => {
+  const token = getTokenFrom(request)
+  const decodedToken = jwt.verify(token, process.env.SECRET)
+  console.log(token)
+  console.log(decodedToken)
+  
+  if (!token || !decodedToken.id) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+  }
   User.find({}).then(users => {
     response.json(users)
 
@@ -16,11 +33,11 @@ userRouter.get('/:id', (request, response) => {
   })
 })
 
-userRouter.post('/', async(request, response) => {
+userRouter.post('/', async (request, response) => {
   const body = request.body
   const saltRounds = 10
   const passwordHash = await bcrypt.hash(body.password, saltRounds)
- 
+
   if (body.username === undefined) {
     return response.status(400).json({ error: 'username missing' })
   }
@@ -30,8 +47,8 @@ userRouter.post('/', async(request, response) => {
   })
 
   const savedUser = await user.save()
-    response.json(savedUser)
-  
+  response.json(savedUser)
+
 
 })
 
