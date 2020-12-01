@@ -1,29 +1,21 @@
-const usersRouter = require('express').Router()
+
+const userRouter = require('express').Router()
 const User = require('../models/user')
 
-
-usersRouter.get('/api/users', (request, response) => {
+userRouter.get('/', (request, response) => {
   User.find({}).then(users => {
     response.json(users)
 
   })
 })
 
-usersRouter.get('/api/users/:id', (request, response) => {
-  User.findById(request.params.id)
-  .then(user => {
-    if(user){
-      response.json(user)
-    }else {
-      response.status(404).end()
-    }
+userRouter.get('/:id', (request, response) => {
+  User.findById(request.params.id).then(user => {
+    response.json(user)
   })
-  .catch(error => {
-    console.log(error)
-    response.status(400).send({ error: 'malformatted id' })    })
 })
 
-usersRouter.post('/api/users', (request, response) => {
+userRouter.post('/', (request, response) => {
   const body = request.body
  
   if (body.username === undefined) {
@@ -39,4 +31,5 @@ usersRouter.post('/api/users', (request, response) => {
   })
 
 })
-module.exports = usersRouter
+
+module.exports = userRouter
