@@ -11,7 +11,7 @@ https://guarded-reaches-84974.herokuapp.com/
 | 27.11. | 5    | rakenteen suunnittelu, backend ja frontend pystyyn ja heroku |
 | 30.11. | 5,5    | frontend herokuun, mongoDB, userin toiminnallisuuden runko |
 | 1.12.  | 6    | userRouter ja sovelluksen rakenteen muokkaus, kirjautuminen backendin puolelle, .env-tiedoston kanssa sekoilua|
-
+|2.12    | 5    | LoginForm, loginservice, localstorage, logout-toiminnallisuus|
 
 
 

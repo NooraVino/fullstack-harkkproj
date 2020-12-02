@@ -9,8 +9,10 @@ import userService from './services/user'
 
 
 
+
 const App = () => {
   const [user, setUser] = useState(null);
+  
 
 
   useEffect(() => {
@@ -34,8 +36,6 @@ const App = () => {
       {user === null ?
 
         <LoginForm /> :
-
-
         <UserList />
       }
 
