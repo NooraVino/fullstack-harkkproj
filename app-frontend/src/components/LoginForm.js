@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
-import loginService from '../services/login' 
+import React, { useState } from 'react';
+import loginService from '../services/login'
+import userService from '../services/user'
 
 
 
@@ -15,17 +16,25 @@ const LoginForm = () => {
       const user = await loginService.login({
         username, password,
       })
+
+      window.localStorage.setItem(
+        'loggedUser', JSON.stringify(user)
+      )
+
+      userService.setToken(user.token)
+      (console.log(user))
       setUser(user)
       console.log(user)
       setUsername('')
       setPassword('')
     } catch (exception) {
+      console.log()
       //setErrorMessage('wrong credentials')
-     // setTimeout(() => {
-       // setErrorMessage(null)
-      } //5000)
-    }
-  
+      // setTimeout(() => {
+      // setErrorMessage(null)
+    } //5000)
+  }
+
 
   return (
     <form onSubmit={handleLogin}>

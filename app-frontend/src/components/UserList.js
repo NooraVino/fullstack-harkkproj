@@ -1,16 +1,27 @@
-import React, {useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'
+import userService from '../services/user'
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
+ const [user, setUser]= useState(null);
+
+  
 
   useEffect(() => {
-  axios
-  .get('/api/users')
-  .then(response=>{
-    setUsers(response.data);
-    console.log(users)
-  })
+    const loggedUserJSON = window.localStorage.getItem('loggedUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+      userService.setToken(user.token)
+    }
+  }, [])
+
+  useEffect(() => {
+    console.log("jsjss")
+    userService.getUsers().then((response) => {
+      setUsers(response)
+    })
   }, [])
 
   return (

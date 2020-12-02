@@ -8,7 +8,14 @@ import LoginForm from './components/LoginForm'
 
 
 const App = () => (
-  <LoginForm/>
+  <div>
+    <div>
+      <LoginForm />
+    </div>
+    <div>
+      <UserList/>
+    </div>
+  </div>
 )
 
 
