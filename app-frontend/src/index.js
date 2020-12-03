@@ -11,44 +11,51 @@ import {
 
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(()=>{return window.localStorage.getItem('loggedUser')})
+ 
+   
 
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedUser')
     if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      setUser(user)
-      userService.setToken(user.token)
+      const loggedUser = JSON.parse(loggedUserJSON)
+      setUser(loggedUser)
+      userService.setToken(loggedUser.token)
     }
   }, [])
 
 
   return (
-    <Router>
+    <div>
 
-  
-      <div>
-      <Switch>
-        <Route path="/login">
-           <LoginForm />
-          </Route>
-          <Route path="/users">
-        <UserList /> 
-          </Route>
-          <Route path="/">
-          <Home/>
-          </Route>
-          </Switch>
 
-      </div>
+      <Router>
+        
 
-      {/* <div>
+
+
+        <Switch>
+          <Route exact path="/users">
+          {user ? <UserList setUser={setUser} /> : <Redirect to="/login" />}
+          </Route>
+          <Route exact path="/login">
+            <LoginForm setUser={setUser} />
+          </Route>
+          <Route exact path="/">
+          {user ? <Home setUser={setUser} /> : <Redirect to="/login" />}
+          </Route>
+        </Switch>
+
+
+
+        {/* <div>
       <br />
         <em>Nooran hieno lahjatoiveSovellus</em>
       </div> */}
 
-    </Router>
+      </Router>
+    </div>
 
   )
 

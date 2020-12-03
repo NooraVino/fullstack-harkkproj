@@ -1,7 +1,7 @@
 import react from 'react'
 
 const Home = () => (
-  <div>Oma etusivu</div>
+<div>hello omasivu</div>
 )
 
 export default Home
