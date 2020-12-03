@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import userService from '../services/user'
+import {useHistory} from 'react-router-dom'
 
 
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
  const [user, setUser]= useState(null);
+
+ const history = useHistory()
 
   
   useEffect(() => {
@@ -27,6 +30,7 @@ const UserList = () => {
     window.localStorage.removeItem('loggedUser')
     setUser(null)
     userService.setToken(null)
+    history.push('/login')
    
   }
 

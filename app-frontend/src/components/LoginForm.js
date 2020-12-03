@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import loginService from '../services/login'
 import userService from '../services/user'
+import {useHistory} from 'react-router-dom'
 
 const LoginForm = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
 
+  const history = useHistory()
+
   const handleLogin = async (event) => {
     event.preventDefault()
+    
 
     try {
       const user = await loginService.login({
@@ -20,11 +24,11 @@ const LoginForm = () => {
       )
 
       userService.setToken(user.token)
-      (console.log(user))
       setUser(user)
       console.log(user)
       setUsername('')
       setPassword('')
+      history.push('/')
     } catch (exception) {
       console.log()
       //setErrorMessage('wrong credentials')
