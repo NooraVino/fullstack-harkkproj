@@ -1,0 +1,9 @@
+POST http://localhost:3001/api/gifts
+Content-Type: application/json
+
+{
+  "name": "lahja2",
+  "content": "testi",
+  "url": ["jdjdjdjd", "hdhdhdh"],
+  "userId": "5fca02fc6188ae3b81ad29d1"
+}

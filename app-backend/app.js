@@ -5,6 +5,7 @@ const app = express()
 const cors = require('cors')
 const userRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
+const giftRouter = require('./controllers/gifts')
 
 
 const url = config.MONGODB_URI
@@ -24,6 +25,7 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFind
 
   app.use('/api/users', userRouter)
   app.use('/api/login', loginRouter)
+  app.use('/api/gifts', giftRouter)
 
 
 
