@@ -6,14 +6,15 @@ import Home from './components/Home'
 import userService from './services/user'
 import {
   BrowserRouter as Router,
-  Switch, Route, Link, Redirect
+  Switch, Route, useHistory, Link, Redirect
 } from "react-router-dom"
 
 
+
 const App = () => {
-  const [user, setUser] = useState(()=>{return window.localStorage.getItem('loggedUser')})
- 
-   
+  const [user, setUser] = useState(() => { return window.localStorage.getItem('loggedUser') })
+  const [page, setPage] = useState('oma');
+  const history = useHistory()
 
 
   useEffect(() => {
@@ -25,25 +26,43 @@ const App = () => {
     }
   }, [])
 
+  const logout = () => {
+    window.localStorage.removeItem('loggedUser')
+    setUser(null)
+    userService.setToken(null)
+  }
+
+
 
   return (
     <div>
 
-
       <Router>
-        
+        <div>
+          {user !== null &&
+            <button onClick={() => logout()}>Kirjaudu ulos</button>
 
+          }
+        </div>
+        <div>
+
+          {page === 'muiden'
+            ? <Link to="/users" onClick={() => setPage('oma')}>kaikkien toiveet</Link>
+            : <Link to="/" onClick={() => setPage('muiden')}>oma sivu</Link>
+          }
+
+        </div>
 
 
         <Switch>
           <Route exact path="/users">
-          {user ? <UserList setUser={setUser} /> : <Redirect to="/login" />}
+            {user ? <UserList setUser={setUser} /> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/login">
             <LoginForm setUser={setUser} />
           </Route>
           <Route exact path="/">
-          {user ? <Home setUser={setUser} /> : <Redirect to="/login" />}
+            {user ? <Home setUser={setUser} /> : <Redirect to="/login" />}
           </Route>
         </Switch>
 
