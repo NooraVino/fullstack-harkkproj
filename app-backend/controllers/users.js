@@ -16,8 +16,7 @@ const getTokenFrom = request => {
   return null
 }
 
-userRouter.get('/', (request, response, next) => {
-
+userRouter.get('/', async (request, response) => {
   try {
     const token = getTokenFrom(request)
     const decodedToken = jwt.verify(token, process.env.SECRET)
@@ -26,20 +25,25 @@ userRouter.get('/', (request, response, next) => {
       return response.status(401).json({ error: 'token missing or invalid' })
     }
 
-    User.find({}).then(users => {
-      response.json(users)
+    const users = await User.find({})
+    response.json(users)
 
-    })
+
   }
   catch (exception) {
     response.status(401).json({ error: 'invalid token' })
   }
 })
 
-userRouter.get('/:id', (request, response) => {
-  User.findById(request.params.id).then(user => {
-    response.json(user)
-  })
+userRouter.get('/:id', async (request, response) => {
+  try{
+  const user = await User.findById(request.params.id).populate('gifts')
+  
+  response.json(user)
+  }catch (exeption) {
+    response.status(401).json({ error: 'id missing' })
+  }
+
 })
 
 userRouter.post('/', async (request, response) => {

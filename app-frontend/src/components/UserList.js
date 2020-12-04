@@ -24,13 +24,7 @@ const UserList = ({setUser}) => {
     })
   }, [])
 
-  const logout = () => {
-    window.localStorage.removeItem('loggedUser')
-    setUser(null)
-    userService.setToken(null)
-    history.push('/login')
 
-  }
 
   return (
     <div>
@@ -43,7 +37,7 @@ const UserList = ({setUser}) => {
           </li>
         )}</ul>
 
-      <div><button onClick={() => logout()}>Kirjaudu ulos</button></div>
+    
     </div>
 
   )

@@ -18,4 +18,11 @@ const getUsers = () => {
   return request.then(response => response.data)
 }
 
-export default { getUsers, setToken }
+const getOneUser = async (id) => {
+  const response = await axios.get(`${baseUrl}/${id} `)
+
+  return response.data
+
+}
+
+export default { getUsers, setToken, getOneUser }

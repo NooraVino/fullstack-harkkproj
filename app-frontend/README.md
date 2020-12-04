@@ -12,6 +12,10 @@ https://guarded-reaches-84974.herokuapp.com/
 | 30.11. | 5,5    | frontend herokuun, mongoDB, userin toiminnallisuuden runko |
 | 1.12.  | 6    | userRouter ja sovelluksen rakenteen muokkaus, kirjautuminen backendin puolelle, .env-tiedoston kanssa sekoilua|
 |2.12    | 5    | LoginForm, loginservice, localstorage, logout-toiminnallisuus|
+|3.12    | 5,5  | Routerin käytön harjoittelua |
+|4.12    | 2,5   | Navigointi-frontend sekä Model ja Router lahjalle -backend |
+|4.12    | 2,5   | Yksittäisin käyttäjän näkymä- frontend |
+|yhteensä| 33
 
 
 
