@@ -3,8 +3,9 @@ import React, {useEffect, useState} from 'react'
 import user from '../services/user';
 import userService from '../services/user'
 
-const Home = ({user}) => {
+const Home = ({user, setUser}) => {
   //const [gifts, setGifts] = useState([]);
+  
  
   useEffect(() => {
     if (!userService.getToken()) {
@@ -14,17 +15,28 @@ const Home = ({user}) => {
         userService.setToken(loggedUser.token)
         setUser(loggedUser)
       }
-    }
+    } if (user) {
+    userService.getOneUser(user.id).then((response) => {
+          setUser(response)
+    })}
   
   }, [])
  
   
-console.log({user})
+//console.log({user})
 return(
 <div>
   hello omasivu
-  {user.username}
+{user
+?<div>{user.username}</div>
+:<div>ei käyttäjiä </div> }
 
+
+
+
+
+  
+  
   {/* <ul>
         {gifts.map(u =>
           <li key={u.id}>

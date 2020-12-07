@@ -4,37 +4,24 @@ import UserList from './components/UserList'
 import LoginForm from './components/LoginForm'
 import Home from './components/Home'
 import userService from './services/user'
-import {
-  BrowserRouter as Router,
-  Switch, Route, useHistory, Link, Redirect
-} from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, useHistory, Link, Redirect } from "react-router-dom"
 
 
 
 const App = () => {
   const [user, setUser] = useState()
   const [page, setPage] = useState('oma');
- const [loggedUser, setLoggedUser]= useState(() => {return window.localStorage.getItem('loggedUser')})
-  const history = useHistory()
+  const [loggedUser, setLoggedUser] = useState(() => { return window.localStorage.getItem('loggedUser') })
 
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedUser')
     if (loggedUserJSON) {
       const loggedUser = JSON.parse(loggedUserJSON)
-      //setUser(loggedUser)
       setLoggedUser(loggedUser)
       userService.setToken(loggedUser.token)
     }
   }, [])
-
-  // useEffect(() => {
-  //   if (user){
-  //   userService.getOneUser(user.id).then((response) => {
-  //     setUserp(response)
-  //     console.log(userp)
-  //   })}
-  // }, [])
 
   const logout = () => {
     window.localStorage.removeItem('loggedUser')
@@ -43,16 +30,12 @@ const App = () => {
     userService.setToken(null)
   }
 
-
-
   return (
     <div>
-
       <Router>
         <div>
-          {user !== null &&
+          {loggedUser !== null &&
             <button onClick={() => logout()}>Kirjaudu ulos</button>
-
           }
         </div>
         <div>
@@ -64,7 +47,6 @@ const App = () => {
 
         </div>
 
-
         <Switch>
           <Route exact path="/users">
             {loggedUser ? <UserList setUser={setUser} /> : <Redirect to="/login" />}
@@ -73,7 +55,7 @@ const App = () => {
             <LoginForm setUser={setUser} setLoggedUser={setLoggedUser} />
           </Route>
           <Route path="/">
-            {loggedUser ? <Home setUset={setUser} user={user}/> : <Redirect to="/login" />}
+            {loggedUser ? <Home setUser={setUser} user={user} /> : <Redirect to="/login" />}
           </Route>
         </Switch>
 
