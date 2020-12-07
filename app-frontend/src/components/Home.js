@@ -34,7 +34,7 @@ return(
 ?<div> <ul>
 {gifts.map(u =>
   <li key={u.id}>
-    <div>{u.name} </div> <div>{u.content}</div>
+    <div>{u.name} </div> <div>{u.content}</div> <div><a href={u.url} title={u.url}>{u.url}</a></div>
   </li>
 )}</ul>
 

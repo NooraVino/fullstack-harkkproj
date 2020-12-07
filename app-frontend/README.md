@@ -16,8 +16,8 @@ https://guarded-reaches-84974.herokuapp.com/
 |4.12    | 2,5   | Navigointi-frontend sekä Model ja Router lahjalle -backend |
 |4.12    | 2,5   | Yksittäisin käyttäjän näkymä- frontend |
 |7.12    | 3     | Kirjautuneen käyttäjän hakemista frontend|
-|7.12    | 1,5   | Uuden lahjan lisäys -frontend|
-|yhteensä| 37,5
+|7.12    | 3   | Uuden lahjan lisäys -frontend, linkki|
+|yhteensä| 39
 
 
 

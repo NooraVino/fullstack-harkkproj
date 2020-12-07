@@ -27,6 +27,7 @@ const NewGiftForm = ({user}) => {
       setName('')
       setContent('')
       setUrl('')
+      
       history.push('/')
     } catch (exception) {
      
