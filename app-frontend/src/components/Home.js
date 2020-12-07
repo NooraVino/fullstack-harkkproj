@@ -1,36 +1,32 @@
 
 import React, {useEffect, useState} from 'react'
+import user from '../services/user';
 import userService from '../services/user'
 
 const Home = ({user}) => {
-  const [userp, setUserp]= useState(null);
-  
-  
-  // useEffect(() => {
-  //   const loggedUserJSON = window.localStorage.getItem('loggedUser')
-  //   if (loggedUserJSON) {
-  //     const user = JSON.parse(loggedUserJSON)
-  //     setUser(user)
-  //     userService.setToken(user.token)
-  //     console.log(user)
-  //   }
-  // }, [])
-
+  //const [gifts, setGifts] = useState([]);
+ 
   useEffect(() => {
-    //console.log(user)
-    userService.getOneUser(user.id).then((response) => {
-      console.log(response)
-      setUserp(response)
-      console.log(userp)
-    })
+    if (!userService.getToken()) {
+      const loggedUserJSON = window.localStorage.getItem('loggedUser')
+      if (loggedUserJSON) {
+        const loggedUser = JSON.parse(loggedUserJSON)
+        userService.setToken(loggedUser.token)
+        setUser(loggedUser)
+      }
+    }
+  
   }, [])
-
+ 
+  
+console.log({user})
 return(
 <div>
   hello omasivu
+  {user.username}
 
   {/* <ul>
-        {userp.gifts.map(u =>
+        {gifts.map(u =>
           <li key={u.id}>
             {u.name}
           </li>

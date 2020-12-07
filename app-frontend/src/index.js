@@ -12,8 +12,9 @@ import {
 
 
 const App = () => {
-  const [user, setUser] = useState(() => { return window.localStorage.getItem('loggedUser') })
+  const [user, setUser] = useState()
   const [page, setPage] = useState('oma');
+ const [loggedUser, setLoggedUser]= useState(() => {return window.localStorage.getItem('loggedUser')})
   const history = useHistory()
 
 
@@ -21,14 +22,24 @@ const App = () => {
     const loggedUserJSON = window.localStorage.getItem('loggedUser')
     if (loggedUserJSON) {
       const loggedUser = JSON.parse(loggedUserJSON)
-      setUser(loggedUser)
+      //setUser(loggedUser)
+      setLoggedUser(loggedUser)
       userService.setToken(loggedUser.token)
     }
   }, [])
 
+  // useEffect(() => {
+  //   if (user){
+  //   userService.getOneUser(user.id).then((response) => {
+  //     setUserp(response)
+  //     console.log(userp)
+  //   })}
+  // }, [])
+
   const logout = () => {
     window.localStorage.removeItem('loggedUser')
     setUser(null)
+    setLoggedUser(null)
     userService.setToken(null)
   }
 
@@ -56,13 +67,13 @@ const App = () => {
 
         <Switch>
           <Route exact path="/users">
-            {user ? <UserList setUser={setUser} /> : <Redirect to="/login" />}
+            {loggedUser ? <UserList setUser={setUser} /> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/login">
-            <LoginForm setUser={setUser} />
+            <LoginForm setUser={setUser} setLoggedUser={setLoggedUser} />
           </Route>
           <Route exact path="/">
-            {user ? <Home setUser={setUser} user={user} /> : <Redirect to="/login" />}
+            {loggedUser ? <Home setUset={setUser} user={user}/> : <Redirect to="/login" />}
           </Route>
         </Switch>
 

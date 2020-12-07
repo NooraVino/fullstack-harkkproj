@@ -3,10 +3,10 @@ import loginService from '../services/login'
 import userService from '../services/user'
 import {useHistory} from 'react-router-dom'
 
-const LoginForm = ({setUser}) => {
+const LoginForm = ({setUser, setLoggedUser}) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  //const [user, setUser] = useState(null)
+  
 
   const history = useHistory()
 
@@ -24,6 +24,7 @@ const LoginForm = ({setUser}) => {
      
       userService.setToken(user.token)
       setUser(user)
+      setLoggedUser(user)
       setUsername('')
       setPassword('')
       history.push('/')

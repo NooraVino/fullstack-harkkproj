@@ -8,6 +8,9 @@ const setToken = newToken => {
   token = `bearer ${newToken}`
 
 }
+
+const getToken = () => token
+
 const getUsers = () => {
   const config = {
     headers: { Authorization: token },
@@ -25,4 +28,4 @@ const getOneUser = async (id) => {
 
 }
 
-export default { getUsers, setToken, getOneUser }
+export default { getUsers, setToken, getOneUser, getToken }
