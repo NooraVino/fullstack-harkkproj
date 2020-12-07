@@ -11,11 +11,12 @@ giftRouter.get('/', (request, response, next) => {
 
 giftRouter.post('/', async (request, response) => {
   const body = request.body
+  console.log(body)
  
   if (body.name === undefined) {
     return response.status(400).json({ error: 'name missing' })
   }
-  const user = await User.findById(body.userId)
+  const user = await User.findById(body.id)
 
   const gift = new Gift({
     name: body.name,

@@ -2,9 +2,10 @@
 import React, {useEffect, useState} from 'react'
 import user from '../services/user';
 import userService from '../services/user'
+import NewGiftForm from './NewGiftForm'
 
 const Home = ({user, setUser}) => {
-  //const [gifts, setGifts] = useState([]);
+const [gifts, setGifts] = useState([]);
   
  
   useEffect(() => {
@@ -17,7 +18,9 @@ const Home = ({user, setUser}) => {
       }
     } if (user) {
     userService.getOneUser(user.id).then((response) => {
-          setUser(response)
+    setUser(response)
+    setGifts(response.gifts)
+    console.log(response.gifts)
     })}
   
   }, [])
@@ -28,7 +31,19 @@ return(
 <div>
   hello omasivu
 {user
-?<div>{user.username}</div>
+?<div> <ul>
+{gifts.map(u =>
+  <li key={u.id}>
+    <div>{u.name} </div> <div>{u.content}</div>
+  </li>
+)}</ul>
+
+
+<NewGiftForm user={user}/>
+
+
+</div>
+
 :<div>ei käyttäjiä </div> }
 
 
@@ -37,12 +52,7 @@ return(
 
   
   
-  {/* <ul>
-        {gifts.map(u =>
-          <li key={u.id}>
-            {u.name}
-          </li>
-        )}</ul> */}
+ 
 
 
 
