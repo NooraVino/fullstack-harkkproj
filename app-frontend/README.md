@@ -15,7 +15,8 @@ https://guarded-reaches-84974.herokuapp.com/
 |3.12    | 5,5  | Routerin käytön harjoittelua |
 |4.12    | 2,5   | Navigointi-frontend sekä Model ja Router lahjalle -backend |
 |4.12    | 2,5   | Yksittäisin käyttäjän näkymä- frontend |
-|yhteensä| 33
+|7.12    | 3     | Kirjautuneen käyttäjän hakemista frontend|
+|yhteensä| 36
 
 
 
