@@ -58,7 +58,7 @@ const App = () => {
 
         <Switch>
           <Route exact path="/users">
-            {loggedUser ? <UserList setUser={setUser} /> : <Redirect to="/login" />}
+            {loggedUser ? <UserList setUser={setUser}user={user} /> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/login">
             <LoginForm setUser={setUser} setLoggedUser={setLoggedUser} setGifts={setGifts} />

@@ -25,7 +25,7 @@ userRouter.get('/', async (request, response) => {
       return response.status(401).json({ error: 'token missing or invalid' })
     }
 
-    const users = await User.find({})
+    const users = await User.find({}).populate('gifts')
     response.json(users)
 
 
