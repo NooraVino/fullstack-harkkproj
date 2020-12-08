@@ -21,7 +21,9 @@ const UserList = ({setUser}) => {
   useEffect(() => {
     userService.getUsers().then((response) => {
       setUsers(response)
-    })
+    //   if (response)
+    //   response.gifts.map(s => console.log(s.name))
+     })
   }, [])
 
 
@@ -30,12 +32,15 @@ const UserList = ({setUser}) => {
     <div>
       <h1>Users</h1>
 
-      <ul>
-        {users.map(u =>
-          <li key={u.id}>
+      
+        {users.map((u) =>(
+          <div key={u.id}>
             {u.username}
-          </li>
-        )}</ul>
+            {/* <span>{u.gifts.map(s => <div key={s.id+u.id +3}>{s.name} </div>)}</span> */}
+          </div>
+         
+          
+        ))}
 
     
     </div>

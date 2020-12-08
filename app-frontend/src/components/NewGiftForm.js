@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-
 import giftService from '../services/gift'
 import {useHistory} from 'react-router-dom'
 
-const NewGiftForm = ({user}) => {
+const NewGiftForm = ({user, gifts, setGifts}) => {
   const [name, setName] = useState('')
   const [content, setContent] = useState('')
   const [url, setUrl] = useState('')
@@ -15,19 +14,16 @@ const NewGiftForm = ({user}) => {
     event.preventDefault()
 
     const id = user.id
-    console.log(user.id)
     
     try {
       const gift = await giftService.setNewGift({
         name, content, url, id
       })
-      //console.log(gift)
-
-  
+     
       setName('')
       setContent('')
       setUrl('')
-      
+      setGifts(gifts.concat(gift))
       history.push('/')
     } catch (exception) {
      

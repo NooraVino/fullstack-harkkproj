@@ -17,10 +17,11 @@ const [gifts, setGifts] = useState([]);
         setUser(loggedUser)
       }
     } if (user) {
+      console.log(user)
     userService.getOneUser(user.id).then((response) => {
     setUser(response)
     setGifts(response.gifts)
-    console.log(response.gifts)
+   // console.log(response.gifts)
     })}
   
   }, [])
@@ -39,7 +40,7 @@ return(
 )}</ul>
 
 
-<NewGiftForm user={user}/>
+<NewGiftForm user={user} gifts={gifts} setGifts={setGifts}/>
 
 
 </div>

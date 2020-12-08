@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Switch, Route, useHistory, Link, Redirect } fr
 
 const App = () => {
   const [user, setUser] = useState()
-  const [page, setPage] = useState('oma');
+  const [page, setPage] = useState('muiden');
   const [loggedUser, setLoggedUser] = useState(() => { return window.localStorage.getItem('loggedUser') })
 
 
@@ -34,18 +34,20 @@ const App = () => {
     <div>
       <Router>
         <div>
-          {loggedUser !== null &&
-            <button onClick={() => logout()}>Kirjaudu ulos</button>
+          {loggedUser
+            ? <div>
+              <button onClick={() => logout()}>Kirjaudu ulos</button>
+              <div>{page === 'muiden'
+                ? <div><Link to="/users" onClick={() => setPage('oma')}>kaikkien toiveet</Link> </div>
+                : <div><Link to="/" onClick={() => setPage('muiden')}>oma sivu</Link>  </div>
+              }</div>
+
+            </div>
+            : <div></div>
+
           }
         </div>
-        <div>
 
-          {page === 'muiden'
-            ? <Link to="/users" onClick={() => setPage('oma')}>kaikkien toiveet</Link>
-            : <Link to="/" onClick={() => setPage('muiden')}>oma sivu</Link>
-          }
-
-        </div>
 
         <Switch>
           <Route exact path="/users">
