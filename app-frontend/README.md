@@ -17,7 +17,8 @@ https://guarded-reaches-84974.herokuapp.com/
 |4.12    | 2,5   | Yksittäisin käyttäjän näkymä- frontend |
 |7.12    | 3     | Kirjautuneen käyttäjän hakemista frontend|
 |7.12    | 3   | Uuden lahjan lisäys -frontend, linkki|
-|yhteensä| 39
+|8.12    | 5,5    | Buttonien toiminnan selkeytys, yhden userin tietojen haku, tietojen päivitys sivun latauksen yheteydessä, userlistiin haetaan muiden kuin kirjautuneen tiedot. Ulkoasun aloitus.
+|yhteensä| 44,5   | 
 
 
 
