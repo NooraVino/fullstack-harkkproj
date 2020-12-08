@@ -1,8 +1,12 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-  username: String,
-  passwordHash: String,
+  username: {
+    type: String
+  },
+  passwordHash: {
+    type: String,
+  },
   gifts: [
     {
       type: mongoose.Schema.Types.ObjectId,

@@ -23,7 +23,7 @@ const getUsers = () => {
 
 const getOneUser = async (id) => {
   const response = await axios.get(`${baseUrl}/${id} `)
-
+  //console.log(response.data)
   return response.data
 
 }

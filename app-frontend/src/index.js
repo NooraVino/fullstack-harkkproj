@@ -4,29 +4,36 @@ import UserList from './components/UserList'
 import LoginForm from './components/LoginForm'
 import Home from './components/Home'
 import userService from './services/user'
-import { BrowserRouter as Router, Switch, Route, useHistory, Link, Redirect } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom"
 
 
 
 const App = () => {
-  const [user, setUser] = useState()
+  const [user, setUser] = useState(null)
   const [page, setPage] = useState('muiden');
   const [loggedUser, setLoggedUser] = useState(() => { return window.localStorage.getItem('loggedUser') })
+  const [gifts, setGifts] = useState([]);
 
 
-  useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedUser')
-    if (loggedUserJSON) {
-      const loggedUser = JSON.parse(loggedUserJSON)
-      setLoggedUser(loggedUser)
-      userService.setToken(loggedUser.token)
-    }
+  useEffect(() => {  
+      const loggedUserJSON = window.localStorage.getItem('loggedUser')
+      if (loggedUserJSON) {
+        const loggedUserp = JSON.parse(loggedUserJSON)
+
+        userService.setToken(loggedUserp.token)
+        userService.getOneUser(loggedUserp.id).then((response) => {
+          setUser(response)   
+          setGifts(response.gifts)        
+        })
+      }
   }, [])
+
 
   const logout = () => {
     window.localStorage.removeItem('loggedUser')
     setUser(null)
     setLoggedUser(null)
+    setGifts(null)
     userService.setToken(null)
   }
 
@@ -54,10 +61,10 @@ const App = () => {
             {loggedUser ? <UserList setUser={setUser} /> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/login">
-            <LoginForm setUser={setUser} setLoggedUser={setLoggedUser} />
+            <LoginForm setUser={setUser} setLoggedUser={setLoggedUser} setGifts={setGifts} />
           </Route>
           <Route exact path="/">
-            {loggedUser ? <Home setUser={setUser} user={user} /> : <Redirect to="/login" />}
+            {loggedUser ? <Home user={user} gifts={gifts} setGifts={setGifts} /> : <Redirect to="/login" />}
           </Route>
         </Switch>
 

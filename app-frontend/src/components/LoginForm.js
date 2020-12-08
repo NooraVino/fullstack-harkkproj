@@ -3,7 +3,7 @@ import loginService from '../services/login'
 import userService from '../services/user'
 import {useHistory} from 'react-router-dom'
 
-const LoginForm = ({setUser, setLoggedUser}) => {
+const LoginForm = ({setUser, setLoggedUser, setGifts}) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   
@@ -23,7 +23,13 @@ const LoginForm = ({setUser, setLoggedUser}) => {
       )
      
       userService.setToken(user.token)
-      setUser(user)
+      userService.getOneUser(user.id).then((response) => {
+        setUser(response)   
+        setGifts(response.gifts)        
+      })
+
+
+      //console.log(user.id)
       setLoggedUser(user)
       setUsername('')
       setPassword('')
