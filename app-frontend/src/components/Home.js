@@ -8,6 +8,7 @@ const Home = ({ user, gifts, setGifts, setPage }) => {
   useEffect(()=> {
     setPage('muiden')
   },[])
+  
   return (
     <div className="row">
       <div className="column">

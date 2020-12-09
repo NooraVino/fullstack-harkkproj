@@ -2,34 +2,36 @@ import React, { useState, useEffect } from 'react';
 import userService from '../services/user'
 import { useHistory } from 'react-router-dom'
 
-const UserList = ({ setUser, user, setPage }) => {
-  const [users, setUsers] = useState([]);
+const UserList = ({ setUser, user, setPage, users }) => {
+  //const [users, setUsers] = useState([]);
 
   const history = useHistory()
-  
+  useEffect(()=> {
+    setPage('oma')
+  })
 
-  useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedUser')
-    if (loggedUserJSON) {
-      const userp = JSON.parse(loggedUserJSON)
-      setUser(userp)
-      userService.setToken(userp.token)
-      setPage('oma')
-    }
-  }, [])
+  // useEffect(() => {
+  //   const loggedUserJSON = window.localStorage.getItem('loggedUser')
+  //   if (loggedUserJSON) {
+  //     const userp = JSON.parse(loggedUserJSON)
+  //     setUser(userp)
+  //     userService.setToken(userp.token)
+  //     setPage('oma')
+  //   }
+  // }, [])
 
-  useEffect(() => {
-    if (user) {
-      userService.getUsers().then((response) => {
-        setUsers(response.filter(u => u.id !== user.id))
-      })
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (user) {
+  //     userService.getUsers().then((response) => {
+  //       setUsers(response.filter(u => u.id !== user.id))
+  //     })
+  //   }
+  // }, [])
 
 
-  if (users) {
-    console.log(users)
-  }
+  // if (users) {
+  //   console.log(users)
+  // }
   return (
     <div>
       {users

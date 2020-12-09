@@ -13,19 +13,23 @@ const App = () => {
   const [page, setPage] = useState('');
   const [loggedUser, setLoggedUser] = useState(() => { return window.localStorage.getItem('loggedUser') })
   const [gifts, setGifts] = useState([]);
+  const [users, setUsers] = useState([]);
 
 
-  useEffect(() => {  
-      const loggedUserJSON = window.localStorage.getItem('loggedUser')
-      if (loggedUserJSON) {
-        const loggedUserp = JSON.parse(loggedUserJSON)
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedUser')
+    if (loggedUserJSON) {
+      const loggedUserp = JSON.parse(loggedUserJSON)
 
-        userService.setToken(loggedUserp.token)
-        userService.getOneUser(loggedUserp.id).then((response) => {
-          setUser(response)   
-          setGifts(response.gifts)        
-        })
-      }
+      userService.setToken(loggedUserp.token)
+      userService.getOneUser(loggedUserp.id).then((response) => {
+        setUser(response)
+        setGifts(response.gifts)
+      })
+      userService.getUsers().then((response) => {
+        setUsers(response.filter(u => u.id !== loggedUserp.id))
+      })
+    }
   }, [])
 
 
@@ -46,7 +50,7 @@ const App = () => {
             ? <div className="topnav">
               <button className="logout-button" onClick={() => logout()}>Kirjaudu ulos</button>
               <div>{page === 'muiden'
-                ? <Link to="/users" className="topnav-link" onClick={() => setPage('oma')}>kaikkien toiveet</Link> 
+                ? <Link to="/users" className="topnav-link" onClick={() => setPage('oma')}>kaikkien toiveet</Link>
                 : <Link to="/" className="topnav-link" onClick={() => setPage('muiden')}>oma sivu</Link>
               }</div>
 
@@ -59,13 +63,13 @@ const App = () => {
 
         <Switch>
           <Route exact path="/users">
-            {loggedUser ? <UserList setUser={setUser}user={user} setPage={setPage}/> : <Redirect to="/login" />}
+            {loggedUser ? <UserList setUser={setUser} user={user} setPage={setPage} users={users}/> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/login">
             <LoginForm setUser={setUser} setLoggedUser={setLoggedUser} setGifts={setGifts} />
           </Route>
           <Route exact path="/">
-            {loggedUser ? <Home user={user} gifts={gifts} setGifts={setGifts} setPage={setPage}/> : <Redirect to="/login" />}
+            {loggedUser ? <Home user={user} gifts={gifts} setGifts={setGifts} setPage={setPage} /> : <Redirect to="/login" />}
           </Route>
         </Switch>
 
