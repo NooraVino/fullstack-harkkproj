@@ -35,7 +35,7 @@ const LoginForm = ({ setUser, setLoggedUser, setGifts }) => {
       setPassword('')
       history.push('/')
     } catch (exception) {
-      setErrorMessage('väärä käyttäjätunnus tai salasana')
+      setErrorMessage('Väärä käyttäjätunnus tai salasana')
       setTimeout(() => {
         setErrorMessage(null)
       }, 5000)
@@ -44,13 +44,15 @@ const LoginForm = ({ setUser, setLoggedUser, setGifts }) => {
     }
 
   }
-    return (
-      <div>
-        <div>{errorMessage} </div>
+  return (
+    <div className="form">
+      <div className="error">{errorMessage}</div>
       <form onSubmit={handleLogin}>
         <div>
-          username
+          Käyttäjänimi
         <input
+            className="input"
+            placeholder="käyttäjänimi"
             type="text"
             value={username}
             name="Username"
@@ -58,17 +60,19 @@ const LoginForm = ({ setUser, setLoggedUser, setGifts }) => {
           />
         </div>
         <div>
-          password
+          Salasana
         <input
+            className="input"
+            placeholder="salasana"
             type="password"
             value={password}
             name="Password"
             onChange={({ target }) => setPassword(target.value)}
           />
         </div>
-        <button type="submit">login</button>
+        <button className="button" type="submit">Kirjaudu sisään</button>
       </form>
-      </div>
-    )
-  }
-  export default LoginForm
+    </div>
+  )
+}
+export default LoginForm

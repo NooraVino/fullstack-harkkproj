@@ -39,14 +39,14 @@ const NewGiftForm = ({ user, gifts, setGifts }) => {
 
   return (
     <div className="form">
-      <div className="error">{errorMessage} </div>
+      <div className="error">{errorMessage}</div>
       <form onSubmit={handleGiftAdd}>
         <div>
           Lahjatoive
         <input
             className="input"
-            type="text"
             placeholder="Lahjatoiveen nimi.."
+            type="text" 
             value={name}
             name="name"
             onChange={({ target }) => setName(target.value)}

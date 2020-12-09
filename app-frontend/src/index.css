@@ -25,10 +25,11 @@
 }
 
 .button {
-  background-color: #576316;
+  background-color: #393a35;
   color: white;
   padding: 6px 25px;
-  text-align: center; 
+  text-align: center;
+  margin: 15px; 
 }
 button:hover {
   background-color: rgb(60, 77, 53);
