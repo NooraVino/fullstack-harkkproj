@@ -1,13 +1,86 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+.error {
+  color: red;
+  margin-bottom: 15px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.gift-item {
+  background-color: #e9ecbd;
+  margin: 15px;
+  height: 150px;
+  
+}
+.gift-name {
+  font-weight: bold;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.gift-content {
+  padding: 10px;
+}
+
+.gift-url {
+  padding: 10px;
+}
+
+.button {
+  background-color: #576316;
+  color: white;
+  padding: 6px 25px;
+  text-align: center; 
+}
+button:hover {
+  background-color: rgb(60, 77, 53);
+}
+
+.input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
+.form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin: 15px;
+ 
+}
+.column {
+  float: left;
+  width: 50%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  height: 80px;
+}
+.topnav-link {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  margin: 10px;
+}
+.logout-button {
+  float: right;
+  display: block;
+  background: rebeccapurple;
+  text-align: center;
+  padding: 10px 10px;
+  margin: 20px;
+ 
 }

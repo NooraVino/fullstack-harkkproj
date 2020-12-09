@@ -5,7 +5,7 @@ import LoginForm from './components/LoginForm'
 import Home from './components/Home'
 import userService from './services/user'
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom"
-
+import './index.css'
 
 
 const App = () => {
@@ -40,13 +40,13 @@ const App = () => {
   return (
     <div>
       <Router>
-        <div>
+        <div >
           {loggedUser
-            ? <div>
-              <button onClick={() => logout()}>Kirjaudu ulos</button>
+            ? <div className="topnav">
+              <button className="logout-button" onClick={() => logout()}>Kirjaudu ulos</button>
               <div>{page === 'muiden'
-                ? <div><Link to="/users" onClick={() => setPage('oma')}>kaikkien toiveet</Link> </div>
-                : <div><Link to="/" onClick={() => setPage('muiden')}>oma sivu</Link>  </div>
+                ? <Link to="/users" className="topnav-link" onClick={() => setPage('oma')}>kaikkien toiveet</Link> 
+                : <Link to="/" className="topnav-link" onClick={() => setPage('muiden')}>oma sivu</Link>
               }</div>
 
             </div>

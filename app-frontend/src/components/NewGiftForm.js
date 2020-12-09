@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import giftService from '../services/gift'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
-const NewGiftForm = ({user, gifts, setGifts}) => {
+const NewGiftForm = ({ user, gifts, setGifts }) => {
   const [name, setName] = useState('')
   const [content, setContent] = useState('')
   const [url, setUrl] = useState('')
-  
+  const [errorMessage, setErrorMessage] = useState(null)
+
 
   const history = useHistory()
 
@@ -14,60 +15,71 @@ const NewGiftForm = ({user, gifts, setGifts}) => {
     event.preventDefault()
 
     const id = user.id
-    
+
     try {
       const gift = await giftService.setNewGift({
         name, content, url, id
       })
-     
+
       setName('')
       setContent('')
       setUrl('')
       setGifts(gifts.concat(gift))
       history.push('/')
     } catch (exception) {
-     
-      //setErrorMessage('wrong credentials')
-      // setTimeout(() => {
-      // setErrorMessage(null)
-    } //5000)
+
+      setErrorMessage('Toivetta ei voi lisätä ilman nimeä!')
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
+
+    }
   }
 
 
   return (
-    <form onSubmit={handleGiftAdd}>
-      <div>
-        name
+    <div className="form">
+      <div className="error">{errorMessage} </div>
+      <form onSubmit={handleGiftAdd}>
+        <div>
+          Lahjatoive
         <input
-          type="text"
-          value={name}
-          name="name"
-          onChange={({ target }) => setName(target.value)}
-        />
-      </div>
-      <div>
-        content
+            className="input"
+            type="text"
+            placeholder="Lahjatoiveen nimi.."
+            value={name}
+            name="name"
+            onChange={({ target }) => setName(target.value)}
+          />
+        </div>
+        <div>
+          Kuvaus:
         <input
-          type="text"
-          value={content}
-          name="content"
-          onChange={({ target }) => setContent(target.value)}
-        />
-      </div>
-      <div>
-        url
+            className="input"
+            placeholder="Vapaamuotoinen kuvaus.."
+            type="text"
+            value={content}
+            name="content"
+            onChange={({ target }) => setContent(target.value)}
+          />
+        </div>
+        <div >
+          Linkki:
         <input
-          type="text"
-          value={url}
-          name="url"
-          onChange={({ target }) => setUrl(target.value)}
-        />
-      </div>
+            className="input"
+            placeholder="Mahdollisia linkkejä.."
+            type="text"
+            value={url}
+            name="url"
+            onChange={({ target }) => setUrl(target.value)}
+          />
+        </div>
 
 
 
-      <button type="submit">lisää toive</button>
-    </form>
+        <button className="button" type="submit">lisää toive</button>
+      </form>
+    </div>
   )
 }
 export default NewGiftForm
