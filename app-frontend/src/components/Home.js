@@ -4,9 +4,10 @@ import user from '../services/user';
 import userService from '../services/user'
 import NewGiftForm from './NewGiftForm'
 
-const Home = ({ user, gifts, setGifts }) => {
-
-
+const Home = ({ user, gifts, setGifts, setPage }) => {
+  useEffect(()=> {
+    setPage('muiden')
+  },[])
   return (
     <div className="row">
       <div className="column">

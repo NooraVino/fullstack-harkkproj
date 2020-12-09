@@ -10,7 +10,7 @@ import './index.css'
 
 const App = () => {
   const [user, setUser] = useState(null)
-  const [page, setPage] = useState('muiden');
+  const [page, setPage] = useState('');
   const [loggedUser, setLoggedUser] = useState(() => { return window.localStorage.getItem('loggedUser') })
   const [gifts, setGifts] = useState([]);
 
@@ -34,6 +34,7 @@ const App = () => {
     setUser(null)
     setLoggedUser(null)
     setGifts(null)
+    setPage('')
     userService.setToken(null)
   }
 
@@ -58,13 +59,13 @@ const App = () => {
 
         <Switch>
           <Route exact path="/users">
-            {loggedUser ? <UserList setUser={setUser}user={user} /> : <Redirect to="/login" />}
+            {loggedUser ? <UserList setUser={setUser}user={user} setPage={setPage}/> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/login">
             <LoginForm setUser={setUser} setLoggedUser={setLoggedUser} setGifts={setGifts} />
           </Route>
           <Route exact path="/">
-            {loggedUser ? <Home user={user} gifts={gifts} setGifts={setGifts} /> : <Redirect to="/login" />}
+            {loggedUser ? <Home user={user} gifts={gifts} setGifts={setGifts} setPage={setPage}/> : <Redirect to="/login" />}
           </Route>
         </Switch>
 
