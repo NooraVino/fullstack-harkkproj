@@ -31,17 +31,18 @@ const UserList = ({ setUser, user }) => {
   }
   return (
     <div>
-      <h1>Users</h1>
+      <h2 className="header">Kaikkien lahjatoiveet:</h2>
 
       {users.map((user) => (
-        <div key={user.id}>
-          <h2>Name</h2>
-          {user.username}
+        <div key={user.id} className="user" >
+          <h3 className="header"> {user.username}n toiveet</h3> 
           { <div>{user.gifts.map(gift =>
-            <div key={gift.id + user.id}>
-              <span><p>Lahjatoiveen nimi: {gift.name}</p></span>
-              <span><p>lahjatoiveen Url: {gift.url}</p></span>
-              <span><p> lahjatoiveen sisältö:  {gift.content}</p></span>
+            <div key={gift.id + user.id} className="gift-item">
+              <div className="gift-name"> {gift.name}</div>
+              <div className="gift-content"> {gift.content}</div>
+              <div className="gift-url">
+                    <a href={gift.url} title={gift.url}>{gift.url}</a>
+                  </div>
             </div>
           )}</div>
           }

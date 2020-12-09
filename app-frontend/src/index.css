@@ -85,3 +85,12 @@ button:hover {
   margin: 20px;
  
 }
+.user{
+  background: rgb(221, 215, 159);
+  margin:20px;
+  padding: 5px;
+}
+
+.header{
+  margin:20px
+}
