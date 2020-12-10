@@ -44,13 +44,15 @@
 }
 .column {
   float: left;
-  width: 50%;
+  width: 50%;  
 }
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
+
+
 
 .topnav {
   overflow: hidden;
@@ -93,9 +95,20 @@
   margin:15px;
   padding: 5px;
   width: 50%;
+  height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: auto;
 }
 
 .header{
   margin:20px
   
+}
+
+.scroller {
+  height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: auto;
 }
