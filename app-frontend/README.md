@@ -34,8 +34,9 @@ Sovellus on toteutettu Fullstack-kurssilta tutulla yhdistelmällä React+Node+Mo
 |7.12    | 3     | Kirjautuneen käyttäjän hakemista frontend|
 |7.12    | 3   | Uuden lahjan lisäys -frontend, linkki|
 |8.12    | 5,5    | Buttonien toiminnan selkeytys, yhden userin tietojen haku, tietojen päivitys sivun latauksen yheteydessä, userlistiin haetaan muiden kuin kirjautuneen tiedot. Ulkoasun aloitus.
-|9.12    | 5     | Ulkoasun toteutus. Userlistin tietojen haku ja päivitys ja siihen liittyvä virheiden jäljitys. tietokannan putsaus. 
-|yhteensä| 49,5   | 
+|9.12    | 5     | Ulkoasun toteutus. Userlistin tietojen haku ja päivitys ja siihen liittyvä virheiden jäljitys. tietokannan putsaus.
+|10.12   | 3     | Linkit avautumaan omaan välilehteen, scrollbarin lisäys omiin toiveisiin, viimeistelyt ulkoasuun ja Readme.md:n päivitys. 
+|yhteensä| 52,5   | 
 
 
 
