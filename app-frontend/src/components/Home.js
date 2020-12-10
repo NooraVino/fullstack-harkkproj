@@ -1,26 +1,26 @@
 
 import React, { useEffect, useState } from 'react'
-import user from '../services/user';
-import userService from '../services/user'
 import NewGiftForm from './NewGiftForm'
 
 const Home = ({ user, gifts, setGifts, setPage }) => {
+  
   useEffect(()=> {
     setPage('muiden')
   },[])
   
   return (
     <div className="row">
+      <h2 className="header"> Omat lahjatoiveeni:</h2>
       <div className="column">
         {user && gifts
           ? <div> 
             <span >
-              {gifts.map(u =>
-                <div key={u.id} className="gift-item">
-                  <div className="gift-name">{u.name} </div>
-                  <div className="gift-content">{u.content}</div>
+              {gifts.map(g =>
+                <div key={g.id} className="gift-item">
+                  <div className="gift-name">{g.name} </div>
+                  <div className="gift-content">{g.content}</div>
                   <div className="gift-url">
-                    <a href={u.url} title={u.url}>{u.url}</a>
+                    <a href={g.url} title={g.url}>{g.url}</a>
                   </div>
                 </div>
               )}</span>

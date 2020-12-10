@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import giftService from '../services/gift'
 import { useHistory } from 'react-router-dom'
+import userService from '../services/user'
 
 const NewGiftForm = ({ user, gifts, setGifts }) => {
   const [name, setName] = useState('')
@@ -8,8 +9,14 @@ const NewGiftForm = ({ user, gifts, setGifts }) => {
   const [url, setUrl] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
 
-
   const history = useHistory()
+
+  useEffect(() => {
+    if (user)
+      userService.getOneUser(user.id).then((response) => {
+        setGifts(response.gifts)
+      })
+  })
 
   const handleGiftAdd = async (event) => {
     event.preventDefault()
@@ -46,7 +53,7 @@ const NewGiftForm = ({ user, gifts, setGifts }) => {
         <input
             className="input"
             placeholder="Lahjatoiveen nimi.."
-            type="text" 
+            type="text"
             value={name}
             name="name"
             onChange={({ target }) => setName(target.value)}
@@ -77,7 +84,7 @@ const NewGiftForm = ({ user, gifts, setGifts }) => {
 
 
 
-        <button className="button" type="submit">lisää toive</button>
+        <button className="button" type="submit">Lisää toive</button>
       </form>
     </div>
   )

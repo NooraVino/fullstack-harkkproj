@@ -39,6 +39,7 @@ const App = () => {
     setLoggedUser(null)
     setGifts(null)
     setPage('')
+    setUsers(null)
     userService.setToken(null)
   }
 
@@ -50,8 +51,8 @@ const App = () => {
             ? <div className="topnav">
               <button className="logout-button" onClick={() => logout()}>Kirjaudu ulos</button>
               <div>{page === 'muiden'
-                ? <Link to="/users" className="topnav-link" onClick={() => setPage('oma')}>kaikkien toiveet</Link>
-                : <Link to="/" className="topnav-link" onClick={() => setPage('muiden')}>oma sivu</Link>
+                ? <Link to="/users" className="topnav-link" onClick={() => setPage('oma')}>Kaikkien toiveet</Link>
+                : <Link to="/" className="topnav-link" onClick={() => setPage('muiden')}>Omat toiveet</Link>
               }</div>
 
             </div>
@@ -66,19 +67,13 @@ const App = () => {
             {loggedUser ? <UserList setUser={setUser} user={user} setPage={setPage} users={users}/> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/login">
-            <LoginForm setUser={setUser} setLoggedUser={setLoggedUser} setGifts={setGifts} />
+            <LoginForm setUser={setUser} setLoggedUser={setLoggedUser} setGifts={setGifts} setUsers={setUsers}/>
           </Route>
           <Route exact path="/">
             {loggedUser ? <Home user={user} gifts={gifts} setGifts={setGifts} setPage={setPage} /> : <Redirect to="/login" />}
           </Route>
         </Switch>
 
-
-
-        {/* <div>
-      <br />
-        <em>Nooran hieno lahjatoiveSovellus</em>
-      </div> */}
 
       </Router>
     </div>

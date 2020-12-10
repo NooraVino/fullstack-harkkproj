@@ -5,9 +5,8 @@
 }
 
 .gift-item {
-  background-color: #e9ecbd;
+  background-color: #bec0bb3b;
   margin: 15px;
-  height: 150px;
   
 }
 .gift-name {
@@ -18,21 +17,12 @@
 
 .gift-content {
   padding: 10px;
+  width: 100%;
 }
 
 .gift-url {
   padding: 10px;
-}
-
-.button {
-  background-color: #393a35;
-  color: white;
-  padding: 6px 25px;
-  text-align: center;
-  margin: 15px; 
-}
-button:hover {
-  background-color: rgb(60, 77, 53);
+  width: 90%;
 }
 
 .input {
@@ -47,7 +37,7 @@ button:hover {
 }
 .form {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: #a2a39db6;
   padding: 20px;
   margin: 15px;
  
@@ -64,33 +54,48 @@ button:hover {
 
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background-color: rgb(38, 39, 41);
   height: 80px;
 }
 .topnav-link {
-  float: left;
+  background-color: #695f5f;
+  float: right;
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 6px 15px;
   text-decoration: none;
-  margin: 10px;
+  margin: 15px;
+  width: 120px;
 }
 .logout-button {
   float: right;
-  display: block;
-  background: rebeccapurple;
+  background-color: #695f5f;
+  color: white;
+  padding: 6px 25px;
   text-align: center;
-  padding: 10px 10px;
-  margin: 20px;
- 
+  margin: 15px;  
 }
+
+.button {
+  background-color: #695f5f;
+  color: white;
+  padding: 6px 25px;
+  text-align: center;
+  margin: 15px; 
+}
+.button:hover {
+  background-color: #484452; 
+}
+
 .user{
-  background: rgb(221, 215, 159);
-  margin:20px;
+  background-color: #ebece888;
+  margin:15px;
   padding: 5px;
+  width: 50%;
 }
 
 .header{
   margin:20px
+  
 }
