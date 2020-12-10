@@ -13,7 +13,7 @@ const UserList = ({ setPage, users }) => {
           <h2 className="header">Kaikkien lahjatoiveet:</h2>
          
           {users.map((user) => (
-             
+           
             <div key={user.id} className="user" >
               <h3 className="header"> {user.username}n toiveet</h3>
               { <div >{user.gifts.map(gift =>

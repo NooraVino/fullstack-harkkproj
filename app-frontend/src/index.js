@@ -67,7 +67,7 @@ const App = () => {
             {loggedUser ? <UserList setUser={setUser} user={user} setPage={setPage} users={users} /> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/login">
-            <LoginForm setUser={setUser} setLoggedUser={setLoggedUser} setGifts={setGifts} />
+            <LoginForm setUser={setUser} setLoggedUser={setLoggedUser} setGifts={setGifts} setUsers={setUsers}/>
           </Route>
           <Route exact path="/">
             {loggedUser ? <Home user={user} gifts={gifts} setGifts={setGifts} setPage={setPage} /> : <Redirect to="/login" />}

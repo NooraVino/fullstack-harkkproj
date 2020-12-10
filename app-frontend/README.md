@@ -1,14 +1,15 @@
 # FullStack 2020-kurssin harjoitustyö
 
-Sovellus on tarkoitettu käytettäväksi lähimmäisten kesken joululahjatoiveiden esittämistä ja niistä keskustelemista varten. Sovellukseen on kirjauduttava sisään, jonka jälkeen avautuu sivu, jossa näkyy omat toiveesi sekä lomake toiveiden lisäämistä varten. Sovelluksessa pääsee myös tarkastelemaan muiden käyttäjien esittämiä toiveita ja kommentoimaan niitä. Luonnollisesti et tietenkään voi nähdä omiin toiveisiisi muiden lisäämiä kommentteja. Näin samalla sovelluksella voit esittää omat toiveesi sekä keskustella esimerkiksi sisarien kesken, mitä äidille hommataan. (Sovellus on vielä kesken, ja kommentointi-toiminnallisuus puuttuu vielä).
+Sovellus on tarkoitettu käytettäväksi lähipiirin kesken joululahjatoiveiden esittämistä ja niistä keskustelemista varten. Sovellukseen on kirjauduttava sisään, jonka jälkeen avautuu sivu, jossa näkyy omat toiveesi sekä lomake toiveiden lisäämistä varten. Sovelluksessa pääsee myös tarkastelemaan muiden käyttäjien esittämiä toiveita ja kommentoimaan niitä. Luonnollisesti et tietenkään voi nähdä omiin toiveisiisi muiden lisäämiä kommentteja. Näin samalla sovelluksella voit esittää omat toiveesi sekä keskustella esimerkiksi sisarien kesken, mitä äidille hommataan. (Sovellus on vielä kesken, ja kommentointi-toiminnallisuus puuttuu vielä).
 
 Sovellukseen voi kirjautua esimerkiksi käyttäjillä:
 
-käyttäjänimi: Ville
+käyttäjänimi: Ville,
 salasana: salasana
 
-tai 
-käyttäjänimi: Kalle
+tai
+
+käyttäjänimi: Kalle,
 salasana: kummitus
 
 ### Sovellusta pääset käyttämään Herokussa:
@@ -35,6 +36,10 @@ Sovellus on toteutettu Fullstack-kurssilta tutulla yhdistelmällä React+Node+Mo
 |8.12    | 5,5    | Buttonien toiminnan selkeytys, yhden userin tietojen haku, tietojen päivitys sivun latauksen yheteydessä, userlistiin haetaan muiden kuin kirjautuneen tiedot. Ulkoasun aloitus.
 |9.12    | 5     | Ulkoasun toteutus. Userlistin tietojen haku ja päivitys ja siihen liittyvä virheiden jäljitys. tietokannan putsaus. 
 |yhteensä| 49,5   | 
+
+
+
+ToDo: kommentointi kokonaisuudessaan, useamman linkin lisäys toiveeseen, toiveen muokkaus/ei-aktiivinen toiminnallisuus.
 
 
 
