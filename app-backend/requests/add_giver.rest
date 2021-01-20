@@ -1,0 +1,6 @@
+PUT http://localhost:3001/api/gifts/5fd0d6a9d4f8cd79102e3df1
+Content-Type: application/json
+
+{
+  "id": "5fd0d59bd4f8cd79102e3dee"
+}

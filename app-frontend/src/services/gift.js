@@ -13,6 +13,12 @@ const setNewGift = async (gift) => {
   return response.data
 }
 
+const addGiver = async (gift) => {
+  const response = await axios.put(`${baseUrl}/${gift.id} `, gift)
+  //console.log(response.data)
+  return response.data
+}
 
 
-export default { setNewGift }
+
+export default { setNewGift, addGiver }

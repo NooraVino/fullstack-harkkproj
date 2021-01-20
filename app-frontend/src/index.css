@@ -7,6 +7,7 @@
 .gift-item {
   background-color: #bec0bb3b;
   margin: 15px;
+  padding: 10px;
   
 }
 .gift-name {
@@ -52,8 +53,6 @@
   clear: both;
 }
 
-
-
 .topnav {
   overflow: hidden;
   background-color: rgb(38, 39, 41);
@@ -65,28 +64,32 @@
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 6px 15px;
+  padding: 6px 10px;
   text-decoration: none;
   margin: 15px;
-  width: 120px;
+  width: 115px;
+  border-radius: 2px;
+  font-family: "PT Sans", sans-serif;
+  font-size: 13px;
 }
 .logout-button {
-  float: right;
-  background-color: #695f5f;
-  color: white;
-  padding: 6px 25px;
-  text-align: center;
-  margin: 15px;  
+  float: right; 
 }
 
-.button {
+.login-button, .add-button, .logout-button {
   background-color: #695f5f;
   color: white;
   padding: 6px 25px;
   text-align: center;
-  margin: 15px; 
+  margin: 15px;
+  cursor: pointer; 
+  border-radius: 2px; 
+  border: none; 
+  font-family: "PT Sans", sans-serif;
+  
 }
-.button:hover {
+
+.add-button:hover, .login-button:hover, .logout-button:hover, .topnav-link:hover {
   background-color: #484452; 
 }
 
@@ -98,7 +101,13 @@
 }
 
 .header{
-  margin:20px 
+  margin:20px;   
+}
+.header2{
+  margin:20px; 
+  background-color: rgb(209, 199, 201);
+  padding: 5px;
+  border-radius: 2px;
 }
 
 .scroller {
@@ -106,4 +115,92 @@
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: auto;
+}
+
+.button-togglable-green { 
+  background:rgb(8, 231, 38);
+  padding: 4px;
+  margin-left: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-family: "PT Sans", sans-serif;
+  border: 0;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.button-steady-green {
+  background:rgb(8, 231, 38);
+  padding: 4px;
+  margin-left: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-family: "PT Sans", sans-serif;
+  border: 0;
+  border-radius: 2px;
+  cursor:default;
+}
+
+.button-togglable-grey {
+  background:rgb(75, 69, 69);
+  padding: 4px;
+  margin-left: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-family: "PT Sans", sans-serif;
+  border: 0;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.button-steady-grey {
+  background:rgb(75, 69, 69);
+  padding: 4px;
+  margin-left: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-family: "PT Sans", sans-serif;
+  border: 0;
+  border-radius: 2px;
+  cursor:default;
+
+}
+.button-togglable-green:hover {
+  background:rgb(6, 180, 29);
+}
+
+
+.button-togglable-grey:hover{
+  background:rgb(44, 42, 42);
+}
+
+
+.giftGivers-line {
+  display: flex;
+}
+
+
+.arrow {
+  border: solid rgb(80, 75, 75);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.show-more-link{
+  margin-left: 6px;
+}
+.show-less-link{
+  margin-left: 6px;
+
 }

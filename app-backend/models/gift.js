@@ -16,6 +16,10 @@ const giftSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  givers: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  }],
 })
 
 giftSchema.set('toJSON', {

@@ -84,7 +84,7 @@ const NewGiftForm = ({ user, gifts, setGifts }) => {
 
 
 
-        <button className="button" type="submit">Lisää toive</button>
+        <button className="add-button" type="submit">Lisää toive</button>
       </form>
     </div>
   )

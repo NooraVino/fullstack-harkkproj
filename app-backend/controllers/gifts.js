@@ -9,6 +9,23 @@ giftRouter.get('/', (request, response, next) => {
   })
 })
 
+giftRouter.put('/:id', async (request, response) => {
+  
+  try {
+    const { body } = request
+    const updGift = await Gift.findById(request.params.id)
+  
+    updGift.givers = body.givers
+    console.log(body)
+    const g = await updGift.save()
+   
+    response.json(g.toJSON())
+
+  } catch (exception) {
+
+  }
+})
+
 giftRouter.post('/', async (request, response) => {
   const body = request.body
   console.log(body)

@@ -14,6 +14,7 @@ const App = () => {
   const [loggedUser, setLoggedUser] = useState(() => { return window.localStorage.getItem('loggedUser') })
   const [gifts, setGifts] = useState([]);
   const [users, setUsers] = useState([]);
+  const [giftGivers, setGiftGivers] = useState('')
 
 
   useEffect(() => {
@@ -27,8 +28,10 @@ const App = () => {
         setGifts(response.gifts)
       })
       userService.getUsers().then((response) => {
+        setGiftGivers(response)
         setUsers(response.filter(u => u.id !== loggedUserp.id))
       })
+
     }
   }, [])
 
@@ -64,10 +67,10 @@ const App = () => {
 
         <Switch>
           <Route exact path="/users">
-            {loggedUser ? <UserList setUser={setUser} user={user} setPage={setPage} users={users} /> : <Redirect to="/login" />}
+            {loggedUser ? <UserList  setUser={setUser} setUsers={setUsers} giftGivers={giftGivers} serUsers={setUsers} setPage={setPage} users={users} user={user} /> : <Redirect to="/login" />}
           </Route>
           <Route exact path="/login">
-            <LoginForm setUser={setUser} setLoggedUser={setLoggedUser} setGifts={setGifts} setUsers={setUsers}/>
+            <LoginForm setUser={setUser} setGiftGivers={setGiftGivers} setLoggedUser={setLoggedUser} setGifts={setGifts} setUsers={setUsers} />
           </Route>
           <Route exact path="/">
             {loggedUser ? <Home user={user} gifts={gifts} setGifts={setGifts} setPage={setPage} /> : <Redirect to="/login" />}
